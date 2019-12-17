@@ -1,28 +1,26 @@
-﻿using FigureSquare.Model.Enum;
-using FigureSquare.Model.Interface;
+﻿using FigureArea.Model.Interface;
 
 namespace FigureArea.Model
 {
     /// <summary>
     /// Квадрат
     /// </summary>
-    public class Square : IFigure
+    public class Square : IAreaCalculable, IValidable
     {
         /// <summary>
-        /// Высота и ширина квадрата равны
+        /// Сторона квадрата
         /// </summary>
-        public double Height { get; set; }
-        /// <summary>
-        /// Высота и ширина квадрата равны
-        /// </summary>
-        public double Width { get; set; }
-        public FigureType Type { get; set; }
+        public double Side { get; set; }
 
-        public Square(double height)
+        public double Area => Side * Side;
+        /// <summary>
+        /// Условие валидности
+        /// </summary>
+        public bool IsValid => Side > 0;
+
+        public Square(double side)
         {
-            Height = height;
-            Width = height;
-            Type = FigureType.Square;
+            Side = side;
         }
     }
 }

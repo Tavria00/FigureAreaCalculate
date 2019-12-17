@@ -1,28 +1,29 @@
-﻿using FigureSquare.Model.Enum;
-using FigureSquare.Model.Interface;
+﻿using FigureArea.Model.Interface;
+using System;
 
-namespace FigureArea.Model
+namespace FigureArea.Model 
 {
     /// <summary>
     /// Круг
     /// </summary>
-    public class Circle : IFigure
+    public class Circle : IAreaCalculable, IValidable
     {
         /// <summary>
-        /// Высота круга равна диаметру
+        /// Радиус
         /// </summary>
-        public double Height { get; set; }
+        public double Radius { get; set; }
         /// <summary>
-        /// Ширина круга равна диаметру
+        /// Площадь
         /// </summary>
-        public double Width { get; set; }
-        public FigureType Type { get; set; }
-
-        public Circle(double diameter)
+        public double Area => Math.Pow(Radius, 2) * Math.PI;
+        /// <summary>
+        /// Условие валидности
+        /// </summary>
+        public bool IsValid => Radius > 0;
+        public Circle(double radius)
         {
-            Height = diameter;
-            Width = diameter;
-            Type = FigureType.Circle;
+            Radius = radius;
+
         }
     }
 }
